@@ -4,6 +4,7 @@
 /packages/angular_devkit/build_angular/src/babel-bazel.d.ts
 /packages/angular_devkit/build_angular/test/
 /packages/angular_devkit/build_webpack/test/
+/packages/angular_devkit/build_rspack/test/
 /packages/angular_devkit/schematics_cli/blank/project-files/
 /packages/angular_devkit/schematics_cli/blank/schematic-files/
 /packages/angular_devkit/schematics_cli/schematic/files/

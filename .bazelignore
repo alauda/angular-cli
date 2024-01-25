@@ -9,6 +9,7 @@ packages/angular_devkit/architect/node_modules
 packages/angular_devkit/architect_cli/node_modules
 packages/angular_devkit/build_angular/node_modules
 packages/angular_devkit/build_webpack/node_modules
+packages/angular_devkit/build_rspack/node_modules
 packages/angular_devkit/core/node_modules
 packages/angular_devkit/schematics/node_modules
 packages/angular_devkit/schematics_cli/node_modules

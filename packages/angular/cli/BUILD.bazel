@@ -166,6 +166,7 @@ pkg_npm(
         "//packages/angular_devkit/architect:package.json",
         "//packages/angular_devkit/build_angular:package.json",
         "//packages/angular_devkit/build_webpack:package.json",
+        "//packages/angular_devkit/build_rspack:package.json",
         "//packages/angular_devkit/core:package.json",
         "//packages/angular_devkit/schematics:package.json",
         "//packages/schematics/angular:package.json",
