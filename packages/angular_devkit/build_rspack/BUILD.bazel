@@ -12,13 +12,13 @@ licenses(["notice"])
 package(default_visibility = ["//visibility:public"])
 
 ts_json_schema(
-    name = "webpack_schema",
-    src = "src/builders/webpack/schema.json",
+    name = "rspack_schema",
+    src = "src/builders/rspack/schema.json",
 )
 
 ts_json_schema(
-    name = "webpack_dev_server_schema",
-    src = "src/builders/webpack-dev-server/schema.json",
+    name = "rspack_dev_server_schema",
+    src = "src/builders/rspack-dev-server/schema.json",
 )
 
 ts_library(
@@ -31,14 +31,14 @@ ts_library(
             "src/**/*_spec.ts",
         ],
     ) + [
-        "//packages/angular_devkit/build_rspack:src/builders/webpack-dev-server/schema.ts",
-        "//packages/angular_devkit/build_rspack:src/builders/webpack/schema.ts",
+        "//packages/angular_devkit/build_rspack:src/builders/rspack-dev-server/schema.ts",
+        "//packages/angular_devkit/build_rspack:src/builders/rspack/schema.ts",
     ],
     data = [
         "builders.json",
         "package.json",
-        "src/builders/webpack-dev-server/schema.json",
-        "src/builders/webpack/schema.json",
+        "src/builders/rspack-dev-server/schema.json",
+        "src/builders/rspack/schema.json",
     ],
     module_name = "@angular-devkit/build-rspack",
     module_root = "src/index.d.ts",

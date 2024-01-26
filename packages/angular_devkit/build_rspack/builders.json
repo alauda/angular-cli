@@ -2,24 +2,24 @@
   "$schema": "../architect/src/builders-schema.json",
   "builders": {
     "build": {
-      "implementation": "./src/builders/webpack",
-      "schema": "./src/builders/webpack/schema.json",
-      "description": "Build a webpack app."
+      "implementation": "./src/builders/rspack",
+      "schema": "./src/builders/rspack/schema.json",
+      "description": "Build a rspack app."
     },
-    "webpack": {
-      "implementation": "./src/builders/webpack",
-      "schema": "./src/builders/webpack/schema.json",
-      "description": "Build a webpack app."
+    "rspack": {
+      "implementation": "./src/builders/rspack",
+      "schema": "./src/builders/rspack/schema.json",
+      "description": "Build a rspack app."
     },
     "dev-server": {
-      "implementation": "./src/builders/webpack-dev-server",
-      "schema": "./src/builders/webpack-dev-server/schema.json",
-      "description": "Serve a webpack app."
+      "implementation": "./src/builders/rspack-dev-server",
+      "schema": "./src/builders/rspack-dev-server/schema.json",
+      "description": "Serve a rspack app."
     },
-    "webpack-dev-server": {
-      "implementation": "./src/builders/webpack-dev-server",
-      "schema": "./src/builders/webpack-dev-server/schema.json",
-      "description": "Serve a webpack app."
+    "rspack-dev-server": {
+      "implementation": "./src/builders/rspack-dev-server",
+      "schema": "./src/builders/rspack-dev-server/schema.json",
+      "description": "Serve a rspack app."
     }
   }
 }

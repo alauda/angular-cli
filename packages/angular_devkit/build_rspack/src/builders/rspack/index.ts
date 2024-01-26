@@ -10,15 +10,15 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import rspack from '@rspack/core';
 import { resolve as pathResolve } from 'path';
 import { Observable, from, isObservable, of, switchMap } from 'rxjs';
-import { EmittedFiles, getEmittedFiles, getRSPackConfig } from '../../utils';
-import { Schema as RealRSPackBuilderSchema } from './schema';
+import { EmittedFiles, getEmittedFiles, getRspackConfig } from '../../utils';
+import { Schema as RealRspackBuilderSchema } from './schema';
 
-export type RSPackBuilderSchema = RealRSPackBuilderSchema;
+export type RspackBuilderSchema = RealRspackBuilderSchema;
 
-export interface RSPackLoggingCallback {
+export interface RspackLoggingCallback {
   (stats: rspack.Stats, config: rspack.Configuration): void;
 }
-export interface RSPackFactory {
+export interface RspackFactory {
   (config: rspack.Configuration): Observable<rspack.Compiler> | rspack.Compiler;
 }
 
@@ -28,12 +28,12 @@ export type BuildResult = BuilderOutput & {
   outputPath: string;
 };
 
-export function runRSPack(
+export function runRspack(
   config: rspack.Configuration,
   context: BuilderContext,
   options: {
-    logging?: RSPackLoggingCallback;
-    rspackFactory?: RSPackFactory;
+    logging?: RspackLoggingCallback;
+    rspackFactory?: RspackFactory;
     shouldProvideStats?: boolean;
   } = {},
 ): Observable<BuildResult> {
@@ -41,7 +41,7 @@ export function runRSPack(
     logging: log = (stats, config) => context.logger.info(stats.toString(config.stats)),
     shouldProvideStats = true,
   } = options;
-  const createRSPack = (c: rspack.Configuration) => {
+  const createRspack = (c: rspack.Configuration) => {
     if (options.rspackFactory) {
       const result = options.rspackFactory(c);
       if (isObservable(result)) {
@@ -54,7 +54,7 @@ export function runRSPack(
     }
   };
 
-  return createRSPack({ ...config, watch: false }).pipe(
+  return createRspack({ ...config, watch: false }).pipe(
     switchMap(
       (rspackCompiler) =>
         new Observable<BuildResult>((obs) => {
@@ -114,9 +114,9 @@ export function runRSPack(
   );
 }
 
-export default createBuilder<RSPackBuilderSchema>((options, context) => {
+export default createBuilder<RspackBuilderSchema>((options, context) => {
   // webpackConfig from angular.json
-  const configPath = pathResolve(context.workspaceRoot, options.webpackConfig);
+  const configPath = pathResolve(context.workspaceRoot, options.rspackConfig);
 
-  return from(getRSPackConfig(configPath)).pipe(switchMap((config) => runRSPack(config, context)));
+  return from(getRspackConfig(configPath)).pipe(switchMap((config) => runRspack(config, context)));
 });

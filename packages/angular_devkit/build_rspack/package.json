@@ -1,7 +1,7 @@
 {
   "name": "@angular-devkit/build-rspack",
   "version": "0.0.0-EXPERIMENTAL-PLACEHOLDER",
-  "description": "RSPack Builder for Architect",
+  "description": "Rspack Builder for Architect",
   "experimental": true,
   "main": "src/index.js",
   "typings": "src/index.d.ts",

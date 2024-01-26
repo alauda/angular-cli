@@ -71,9 +71,9 @@ function loadEsmModule<T>(modulePath: string | URL): Promise<T> {
   return new Function('modulePath', `return import(modulePath);`)(modulePath) as Promise<T>;
 }
 
-export async function getRSPackConfig(configPath: string): Promise<Configuration> {
+export async function getRspackConfig(configPath: string): Promise<Configuration> {
   if (!existsSync(configPath)) {
-    throw new Error(`RSPack configuration file ${configPath} does not exist.`);
+    throw new Error(`Rspack configuration file ${configPath} does not exist.`);
   }
 
   switch (path.extname(configPath)) {

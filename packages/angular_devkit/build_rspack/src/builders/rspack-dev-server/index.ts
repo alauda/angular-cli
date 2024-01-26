@@ -11,9 +11,9 @@ import rspack from '@rspack/core';
 import DevServer, { Configuration, RspackDevServer } from '@rspack/dev-server';
 import { resolve as pathResolve } from 'path';
 import { Observable, from, isObservable, of, switchMap } from 'rxjs';
-import { getEmittedFiles, getRSPackConfig } from '../../utils';
-import { BuildResult, RSPackFactory, RSPackLoggingCallback } from '../webpack';
-import { Schema as RSPackDevServerBuilderSchema } from './schema';
+import { getEmittedFiles, getRspackConfig } from '../../utils';
+import { BuildResult, RspackFactory, RspackLoggingCallback } from '../rspack';
+import { Schema as RspackDevServerBuilderSchema } from './schema';
 
 export type DevServerFactory = typeof RspackDevServer;
 
@@ -29,12 +29,12 @@ export function runDevServer(
   options: {
     shouldProvideStats?: boolean;
     devServerConfig?: Configuration;
-    logging?: RSPackLoggingCallback;
-    rspackFactory?: RSPackFactory;
+    logging?: RspackLoggingCallback;
+    rspackFactory?: RspackFactory;
     devServerFactory?: DevServerFactory;
   } = {},
 ): Observable<DevServerBuildOutput> {
-  const createRSPack = (c: rspack.Configuration) => {
+  const createRspack = (c: rspack.Configuration) => {
     if (options.rspackFactory) {
       const result = options.rspackFactory(c);
       if (isObservable(result)) {
@@ -58,12 +58,12 @@ export function runDevServer(
     return new RspackDevServer(config, rspack);
   };
 
-  const log: RSPackLoggingCallback =
+  const log: RspackLoggingCallback =
     options.logging || ((stats, config) => context.logger.info(stats.toString(config.stats)));
 
   const shouldProvideStats = options.shouldProvideStats ?? true;
 
-  return createRSPack({ ...config, watch: false }).pipe(
+  return createRspack({ ...config, watch: false }).pipe(
     switchMap(
       (compiler) =>
         new Observable<DevServerBuildOutput>((obs) => {
@@ -119,11 +119,11 @@ export function runDevServer(
   );
 }
 
-export default createBuilder<RSPackDevServerBuilderSchema, DevServerBuildOutput>(
+export default createBuilder<RspackDevServerBuilderSchema, DevServerBuildOutput>(
   (options, context) => {
-    const configPath = pathResolve(context.workspaceRoot, options.webpackConfig);
+    const configPath = pathResolve(context.workspaceRoot, options.rspackConfig);
 
-    return from(getRSPackConfig(configPath)).pipe(
+    return from(getRspackConfig(configPath)).pipe(
       switchMap((config) => runDevServer(config, context)),
     );
   },

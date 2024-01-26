@@ -4,11 +4,11 @@
   "description": "Webpack Builder schema for Architect.",
   "type": "object",
   "properties": {
-    "webpackConfig": {
+    "rspackConfig": {
       "type": "string",
-      "description": "The path to the Webpack configuration file."
+      "description": "The path to the Rspack or Webpack configuration file."
     }
   },
   "additionalProperties": false,
-  "required": ["webpackConfig"]
+  "required": ["rspackConfig"]
 }

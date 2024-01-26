@@ -74,7 +74,7 @@
       "snapshotRepo": "angular/angular-devkit-build-webpack-builds"
     },
     "@angular-devkit/build-rspack": {
-      "name": "Build RSPack",
+      "name": "Build Rspack",
       "links": [
         {
           "label": "README",
