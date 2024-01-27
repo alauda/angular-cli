@@ -1,0 +1,84 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "rangeStrategy": "replace",
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build",
+  "semanticCommitScope": "",
+  "separateMajorMinor": false,
+  "prHourlyLimit": 2,
+  "labels": ["target: minor", "action: merge"],
+  "timezone": "America/Tijuana",
+  "lockFileMaintenance": { "enabled": true },
+  "dependencyDashboard": true,
+  "schedule": ["after 10:00pm every weekday", "before 4:00am every weekday", "every weekend"],
+  "baseBranches": ["main"],
+  "ignoreDeps": ["@types/node", "aspect_bazel_lib", "rules_pkg", "less-loader"],
+  "includePaths": [
+    "WORKSPACE",
+    "package.json",
+    "packages/**/package.json",
+    "tests/legacy-cli/e2e/ng-snapshot/package.json",
+    ".github/workflows/**/*.yml"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["quicktype-core"],
+      "schedule": ["before 4:00am on the first day of the month"]
+    },
+    {
+      "groupName": "angular",
+      "matchPackagePatterns": ["^@angular/.*", "angular/dev-infra"]
+    },
+    {
+      "groupName": "babel",
+      "matchPackagePatterns": ["^@babel/.*"]
+    },
+    {
+      "groupName": "bazel",
+      "matchPackagePatterns": ["^@bazel/.*", "^build_bazel.*"]
+    },
+    {
+      "separateMinorPatch": true,
+      "matchPackageNames": ["typescript", "rxjs", "tslib"]
+    },
+    {
+      "enabled": false,
+      "matchPackageNames": ["typescript", "rxjs", "tslib"],
+      "matchUpdateTypes": ["major"]
+    },
+    {
+      "enabled": false,
+      "matchPackageNames": ["typescript"],
+      "matchUpdateTypes": ["minor"]
+    },
+    {
+      "matchPaths": [
+        "packages/angular_devkit/schematics_cli/blank/project-files/package.json",
+        "packages/angular_devkit/schematics_cli/schematic/files/package.json",
+        "packages/schematics/angular/utility/latest-versions/package.json"
+      ],
+      "matchPackagePatterns": ["*"],
+      "groupName": "schematics dependencies",
+      "groupSlug": "all-schematics-dependencies",
+      "lockFileMaintenance": { "enabled": false }
+    },
+    {
+      "matchPaths": [
+        "!packages/angular_devkit/schematics_cli/blank/project-files/package.json",
+        "!packages/angular_devkit/schematics_cli/schematic/files/package.json",
+        "!packages/schematics/angular/utility/latest-versions/package.json"
+      ],
+      "excludePackagePatterns": ["^@angular/.*", "angular/dev-infra"],
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
+    },
+    {
+      "matchPaths": [".github/workflows/scorecard.yml"],
+      "matchPackagePatterns": ["*"],
+      "groupName": "scorecard action dependencies",
+      "groupSlug": "scorecard-action"
+    }
+  ]
+}
