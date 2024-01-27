@@ -22,7 +22,7 @@
       "@angular-devkit/schematics": ["./packages/angular_devkit/schematics/src/index"],
       "@angular-devkit/schematics/tasks": ["./packages/angular_devkit/schematics/tasks/index"],
       "@angular-devkit/schematics/tasks/node": [
-        "./packages/angular_devkit/schematics/tasks/node/index"
+        "./packages/angular_devkit/schematics/tasks/node/index",
       ],
       "@angular-devkit/schematics/tools": ["./packages/angular_devkit/schematics/tools/index"],
       "@angular-devkit/schematics/testing": ["./packages/angular_devkit/schematics/testing/index"],
@@ -30,19 +30,20 @@
       "@angular-devkit/architect/testing": ["./packages/angular_devkit/architect/testing/index"],
       "@angular-devkit/build-angular": ["./packages/angular_devkit/build_angular/src/index"],
       "@angular-devkit/build-webpack": ["./packages/angular_devkit/build_webpack/src/index"],
+      "@angular-devkit/build-rspack": ["./packages/angular_devkit/build_rspack/src/index"],
       "@ngtools/webpack": ["./packages/ngtools/webpack/src/index"],
-      "@schematics/angular": ["./packages/schematics/angular/index"]
+      "@schematics/angular": ["./packages/schematics/angular/index"],
     },
     "plugins": [
       {
         "name": "@bazel/tsetse",
         // must-use-promises is handled by the eslint @typescript-eslint/no-floating-promises rule
-        "disabledRules": ["must-type-assert-json-parse", "must-use-promises"]
-      }
-    ]
+        "disabledRules": ["must-type-assert-json-parse", "must-use-promises"],
+      },
+    ],
   },
   "bazelOptions": {
-    "suppressTsconfigOverrideWarnings": true
+    "suppressTsconfigOverrideWarnings": true,
   },
   "exclude": [
     "packages/angular_devkit/build_angular/src/babel-bazel.d.ts",
@@ -55,6 +56,6 @@
     "packages/angular_devkit/schematics_cli/schematic/files/**/*",
     "packages/angular_devkit/*/test/**/*",
     "tests/**/*",
-    ".ng-dev/**/*"
-  ]
+    ".ng-dev/**/*",
+  ],
 }
