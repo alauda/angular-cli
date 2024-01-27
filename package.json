@@ -19,6 +19,8 @@
   "scripts": {
     "admin": "node ./bin/devkit-admin",
     "test": "bazel test //packages/...",
+    "test:rspack": "bazel test //packages/angular_devkit/build_rspack:all",
+    "test:webpack": "bazel test //packages/angular_devkit/build_webpack:all",
     "build": "node ./bin/devkit-admin build",
     "build-tsc": "tsc -p tsconfig.json",
     "lint": "eslint --cache --max-warnings=0 \"**/*.ts\"",
@@ -219,6 +221,8 @@
     "webpack-subresource-integrity": "5.1.0",
     "yargs": "17.7.2",
     "yargs-parser": "21.1.1",
-    "zone.js": "^0.14.0"
+    "zone.js": "^0.14.0",
+    "@rspack/core": "^0.5.2",
+    "@rspack/dev-server": "^0.5.2"
   }
 }

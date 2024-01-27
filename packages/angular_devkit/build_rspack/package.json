@@ -1,0 +1,30 @@
+{
+  "name": "@angular-devkit/build-rspack",
+  "version": "0.0.0-EXPERIMENTAL-PLACEHOLDER",
+  "description": "RSPack Builder for Architect",
+  "experimental": true,
+  "main": "src/index.js",
+  "typings": "src/index.d.ts",
+  "builders": "builders.json",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json",
+    "./*": "./*.js",
+    "./*.js": "./*.js"
+  },
+  "dependencies": {
+    "@angular-devkit/architect": "0.0.0-EXPERIMENTAL-PLACEHOLDER",
+    "rxjs": "7.8.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/core": "0.0.0-PLACEHOLDER",
+    "@rspack/core": "^0.5.2"
+  },
+  "peerDependencies": {
+    "@rspack/core": "^0.5.2",
+    "@rspack/dev-server": "^0.5.2"
+  }
+}
