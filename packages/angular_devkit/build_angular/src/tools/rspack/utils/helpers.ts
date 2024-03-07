@@ -6,17 +6,17 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import type { Configuration, RspackOptionsNormalized } from '@rspack/core';
 import type { ObjectPattern } from 'copy-webpack-plugin';
 import { createHash } from 'crypto';
 import glob from 'fast-glob';
 import * as path from 'path';
+import type { Configuration, RspackOptionsNormalized } from '@rspack/core';
 import {
   AssetPatternClass,
   OutputHashing,
   ScriptElement,
   StyleElement,
-} from '../../../builders/browser/schema';
+} from '../../../builders/browser-rspack/schema';
 import { WebpackConfigOptions } from '../../../utils/build-options';
 
 export interface HashFormat {
@@ -160,7 +160,7 @@ export function getCacheSettings(
   wco: WebpackConfigOptions,
   angularVersion: string,
 ): RspackOptionsNormalized['cache'] {
-  const { enabled, path: cacheDirectory } = wco.buildOptions.cache;
+  // const { enabled, path: cacheDirectory } = wco.buildOptions.cache;
   // if (enabled) {
   //   return {
   //     type: 'filesystem',
@@ -193,9 +193,6 @@ export function getCacheSettings(
   //     maxGenerations: 1,
   //   };
   // }
-  if (enabled || wco.buildOptions.watch) {
-    return true;
-  }
 
   return false;
 }

@@ -10,17 +10,15 @@
 // TODO: cleanup this file, it's copied as is from Angular CLI.
 import * as http from 'http';
 import * as path from 'path';
-import webpack, { Compiler } from 'webpack';
 import { rspack } from '@rspack/core';
 import webpackDevMiddleware from 'webpack-dev-middleware';
-// import rspackDevMiddleware from '@rspack/dev-middleware'
-import {} from '@rspack/core';
 
 import { statsErrorsToString } from '../../utils/stats';
 import { createConsoleLogger } from '@angular-devkit/core/node';
 import { logging } from '@angular-devkit/core';
 import { BuildOptions } from '../../../../utils/build-options';
 import { normalizeSourceMaps } from '../../../../utils/index';
+import { Compiler } from 'webpack-dev-server';
 
 const KARMA_APPLICATION_PATH = '_karma_webpack_';
 
