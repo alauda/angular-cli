@@ -204,6 +204,10 @@ export class WebpackResourceLoader {
             return;
           }
 
+          if (outputFilePath.includes('.css')) {
+            console.log(outputFilePath, asset.source());
+          }
+
           try {
             const output = this._evaluate(outputFilePath, asset.source().toString());
 

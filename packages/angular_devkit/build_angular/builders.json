@@ -21,6 +21,11 @@
       "schema": "./src/builders/browser-esbuild/schema.json",
       "description": "Build a browser application."
     },
+    "browser-rspack": {
+      "implementation": "./src/builders/browser-rspack",
+      "schema": "./src/builders/browser-rspack/schema.json",
+      "description": "Build a browser application."
+    },
     "dev-server": {
       "implementation": "./src/builders/dev-server",
       "schema": "./src/builders/dev-server/schema.json",

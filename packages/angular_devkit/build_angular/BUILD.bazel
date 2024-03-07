@@ -33,6 +33,11 @@ ts_json_schema(
 )
 
 ts_json_schema(
+    name = "browser_rspack_schema",
+    src = "src/builders/browser-rspack/schema.json",
+)
+
+ts_json_schema(
     name = "dev_server_schema",
     src = "src/builders/dev-server/schema.json",
 )
@@ -101,6 +106,7 @@ ts_library(
         "//packages/angular_devkit/build_angular:src/builders/app-shell/schema.ts",
         "//packages/angular_devkit/build_angular:src/builders/application/schema.ts",
         "//packages/angular_devkit/build_angular:src/builders/browser-esbuild/schema.ts",
+        "//packages/angular_devkit/build_angular:src/builders/browser-rspack/schema.ts",
         "//packages/angular_devkit/build_angular:src/builders/browser/schema.ts",
         "//packages/angular_devkit/build_angular:src/builders/dev-server/schema.ts",
         "//packages/angular_devkit/build_angular:src/builders/extract-i18n/schema.ts",
@@ -128,6 +134,7 @@ ts_library(
     deps = [
         "//packages/angular_devkit/architect",
         "//packages/angular_devkit/build_angular/src/utils/routes-extractor",
+        "//packages/angular_devkit/build_rspack",
         "//packages/angular_devkit/build_webpack",
         "//packages/angular_devkit/core",
         "//packages/angular_devkit/core/node",
@@ -149,6 +156,7 @@ ts_library(
         "@npm//@babel/preset-env",
         "@npm//@babel/runtime",
         "@npm//@discoveryjs/json-ext",
+        "@npm//@rspack/core",
         "@npm//@types/babel__core",
         "@npm//@types/browser-sync",
         "@npm//@types/browserslist",
